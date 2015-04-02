@@ -1,0 +1,27 @@
+---
+# Generic things to get machines up to date and usable
+
+- name: Install packages
+  apt:
+    pkg={{item}}
+    state=installed
+  sudo: yes
+  with_items:
+    - vim
+    - zsh
+    - git
+    - tmux
+    - htop
+
+- name: Change default shell
+  user:
+    name=pi
+    shell=/usr/bin/zsh
+  sudo: yes
+
+- name: Add /usr/local/lib to library search path
+  lineinfile:
+    dest=/etc/environment
+    line=LD_LIBRARY_PATH=/usr/local/lib
+    state=present
+  sudo: yes

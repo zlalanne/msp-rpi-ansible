@@ -1,0 +1,9 @@
+---
+# This playbook deploys
+
+- name: Configure and deploy firmware
+  hosts: all
+  remote_user: pi
+  roles:
+    - common
+    - mspdebug

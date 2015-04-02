@@ -1,0 +1,18 @@
+---
+# Playbook to update firmware on connected devices
+
+- name: Create a directory to store the firmware
+  file:
+    path=/var/ansible
+    state=directory
+    owner=pi
+  sudo: yes
+
+- name: Copy the firmware to the hosts
+  copy:
+    src=Blink_v1.out
+    dest=/var/ansible
+
+- name: Download the firmware to the devices
+  shell: mspdebug tilib --allow-fw-update --force-reset "prog /var/ansible/Blink_v1.out"
+  register: status

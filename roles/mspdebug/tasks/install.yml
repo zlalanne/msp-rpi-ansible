@@ -1,0 +1,14 @@
+---
+# Playbook to install msp debug
+
+- name: Install libmsp430.so
+  copy:
+    src=libmsp430.so
+    dest=/usr/local/lib
+  sudo: yes
+
+- name: Install mspdebug
+  copy:
+    src=mspdebug
+    dest=/usr/local/bin
+  sudo: yes
