@@ -1,3 +1,0 @@
-prog /var/ansible/Blink_v1.out
-run
-exit
