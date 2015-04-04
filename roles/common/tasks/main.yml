@@ -18,10 +18,3 @@
     name=pi
     shell=/usr/bin/zsh
   sudo: yes
-
-- name: Add /usr/local/lib to library search path
-  lineinfile:
-    dest=/etc/environment
-    line=LD_LIBRARY_PATH=/usr/local/lib
-    state=present
-  sudo: yes

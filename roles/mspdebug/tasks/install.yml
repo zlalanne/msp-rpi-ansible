@@ -11,4 +11,18 @@
   copy:
     src=mspdebug
     dest=/usr/local/bin
+    mode=775
   sudo: yes
+
+- name: Add /usr/local/lib to LD_SEARCH_PATH
+  lineinfile:
+    dest=/etc/ld.so.conf
+    line=/usr/local/lib
+    state=present
+  sudo: yes
+  register: ld
+
+- name: Rebuild LD cache
+  command: /sbin/ldconfig
+  sudo: yes
+  when: ld.changed

@@ -10,9 +10,9 @@
 
 - name: Copy the firmware to the hosts
   copy:
-    src=Blink_v1.out
+    src={{ firmware_name }}.out
     dest=/var/ansible
 
 - name: Download the firmware to the devices
-  shell: mspdebug tilib --allow-fw-update --force-reset "prog /var/ansible/Blink_v1.out"
-  register: status
+  shell: mspdebug tilib --allow-fw-update --force-reset "prog /var/ansible/{{ firmware_name }}.out"
+  sudo: yes
